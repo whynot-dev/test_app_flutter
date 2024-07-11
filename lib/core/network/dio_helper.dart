@@ -5,12 +5,7 @@ import 'package:test_app_flutter/data/gateways/local/preferences_local_gateway.d
 import 'package:test_app_flutter/di/injection.dart';
 
 class DioHelper {
-  static String getBaseUrl({String? domain}) {
-    String _domain = domain ?? defaultDomain;
-    return 'https://$_domain/api/';
-  }
-
-  static const defaultDomain = 'core.------.ru';
+  static const baseUrl = 'https://api.spaceflightnewsapi.net/v4/';
   static Duration timeout = Duration(milliseconds: 30000);
 
   static Dio getAuthDio() {
@@ -24,7 +19,7 @@ class DioHelper {
         error: true,
       ))
       ..options.receiveDataWhenStatusError = true
-      ..options.baseUrl = getBaseUrl()
+      ..options.baseUrl = baseUrl
       ..options.sendTimeout = timeout
       ..options.connectTimeout = timeout
       ..options.receiveTimeout = timeout;
@@ -39,26 +34,19 @@ class DioHelper {
     Dio dio = Dio()
       ..options.headers = {"Accept": "application/json"}
       ..options.receiveDataWhenStatusError = true
-      ..options.baseUrl = getBaseUrl()
+      ..options.baseUrl = baseUrl
       ..options.sendTimeout = timeout
       ..options.connectTimeout = timeout
       ..options.receiveTimeout = timeout;
     dio.interceptors.add(
       QueuedInterceptorsWrapper(
         onRequest: (RequestOptions options, RequestInterceptorHandler handler) async {
-          if(needAuthorization){
-            String token = await preferencesLocalGateway.getToken() ?? '';
-            if (!options.headers.containsKey('Authorization')) {
-              options.headers.addAll({'Authorization': token});
-            }
-          }
           handler.next(options);
         },
         onResponse: (Response response, ResponseInterceptorHandler handler) async {
           handler.next(response);
         },
-        onError: (DioError error, ErrorInterceptorHandler handler) async {
-        },
+        onError: (DioException error, ErrorInterceptorHandler handler) async {},
       ),
     );
     dio.interceptors.add(LogInterceptor(

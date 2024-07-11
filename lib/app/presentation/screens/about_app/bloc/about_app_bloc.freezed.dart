@@ -136,32 +136,38 @@ mixin _$AboutAppEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function()? linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? linkClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
+    required TResult Function(LinkClicked value) linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
+    TResult? Function(LinkClicked value)? linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
+    TResult Function(LinkClicked value)? linkClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -223,6 +229,7 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() linkClicked,
   }) {
     return init();
   }
@@ -231,6 +238,7 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function()? linkClicked,
   }) {
     return init?.call();
   }
@@ -239,6 +247,7 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? linkClicked,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -251,6 +260,7 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
+    required TResult Function(LinkClicked value) linkClicked,
   }) {
     return init(this);
   }
@@ -259,6 +269,7 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
+    TResult? Function(LinkClicked value)? linkClicked,
   }) {
     return init?.call(this);
   }
@@ -267,6 +278,7 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
+    TResult Function(LinkClicked value)? linkClicked,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -278,4 +290,106 @@ class _$InitImpl implements Init {
 
 abstract class Init implements AboutAppEvent {
   const factory Init() = _$InitImpl;
+}
+
+/// @nodoc
+abstract class _$$LinkClickedImplCopyWith<$Res> {
+  factory _$$LinkClickedImplCopyWith(
+          _$LinkClickedImpl value, $Res Function(_$LinkClickedImpl) then) =
+      __$$LinkClickedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LinkClickedImplCopyWithImpl<$Res>
+    extends _$AboutAppEventCopyWithImpl<$Res, _$LinkClickedImpl>
+    implements _$$LinkClickedImplCopyWith<$Res> {
+  __$$LinkClickedImplCopyWithImpl(
+      _$LinkClickedImpl _value, $Res Function(_$LinkClickedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LinkClickedImpl implements LinkClicked {
+  const _$LinkClickedImpl();
+
+  @override
+  String toString() {
+    return 'AboutAppEvent.linkClicked()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LinkClickedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() linkClicked,
+  }) {
+    return linkClicked();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? linkClicked,
+  }) {
+    return linkClicked?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? linkClicked,
+    required TResult orElse(),
+  }) {
+    if (linkClicked != null) {
+      return linkClicked();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Init value) init,
+    required TResult Function(LinkClicked value) linkClicked,
+  }) {
+    return linkClicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Init value)? init,
+    TResult? Function(LinkClicked value)? linkClicked,
+  }) {
+    return linkClicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Init value)? init,
+    TResult Function(LinkClicked value)? linkClicked,
+    required TResult orElse(),
+  }) {
+    if (linkClicked != null) {
+      return linkClicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LinkClicked implements AboutAppEvent {
+  const factory LinkClicked() = _$LinkClickedImpl;
 }

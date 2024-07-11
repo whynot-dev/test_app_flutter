@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NewsDetailState {
   BlocAction? get action => throw _privateConstructorUsedError;
+  News? get newsDetail => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewsDetailStateCopyWith<NewsDetailState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $NewsDetailStateCopyWith<$Res> {
           NewsDetailState value, $Res Function(NewsDetailState) then) =
       _$NewsDetailStateCopyWithImpl<$Res, NewsDetailState>;
   @useResult
-  $Res call({BlocAction? action});
+  $Res call({BlocAction? action, News? newsDetail});
 }
 
 /// @nodoc
@@ -46,12 +47,17 @@ class _$NewsDetailStateCopyWithImpl<$Res, $Val extends NewsDetailState>
   @override
   $Res call({
     Object? action = freezed,
+    Object? newsDetail = freezed,
   }) {
     return _then(_value.copyWith(
       action: freezed == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
               as BlocAction?,
+      newsDetail: freezed == newsDetail
+          ? _value.newsDetail
+          : newsDetail // ignore: cast_nullable_to_non_nullable
+              as News?,
     ) as $Val);
   }
 }
@@ -64,7 +70,7 @@ abstract class _$$NewsDetailStateImplCopyWith<$Res>
       __$$NewsDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BlocAction? action});
+  $Res call({BlocAction? action, News? newsDetail});
 }
 
 /// @nodoc
@@ -79,12 +85,17 @@ class __$$NewsDetailStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? action = freezed,
+    Object? newsDetail = freezed,
   }) {
     return _then(_$NewsDetailStateImpl(
       action: freezed == action
           ? _value.action
           : action // ignore: cast_nullable_to_non_nullable
               as BlocAction?,
+      newsDetail: freezed == newsDetail
+          ? _value.newsDetail
+          : newsDetail // ignore: cast_nullable_to_non_nullable
+              as News?,
     ));
   }
 }
@@ -92,14 +103,16 @@ class __$$NewsDetailStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NewsDetailStateImpl implements _NewsDetailState {
-  _$NewsDetailStateImpl({this.action});
+  _$NewsDetailStateImpl({this.action, this.newsDetail});
 
   @override
   final BlocAction? action;
+  @override
+  final News? newsDetail;
 
   @override
   String toString() {
-    return 'NewsDetailState(action: $action)';
+    return 'NewsDetailState(action: $action, newsDetail: $newsDetail)';
   }
 
   @override
@@ -107,11 +120,13 @@ class _$NewsDetailStateImpl implements _NewsDetailState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NewsDetailStateImpl &&
-            (identical(other.action, action) || other.action == action));
+            (identical(other.action, action) || other.action == action) &&
+            (identical(other.newsDetail, newsDetail) ||
+                other.newsDetail == newsDetail));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, action);
+  int get hashCode => Object.hash(runtimeType, action, newsDetail);
 
   @JsonKey(ignore: true)
   @override
@@ -122,10 +137,13 @@ class _$NewsDetailStateImpl implements _NewsDetailState {
 }
 
 abstract class _NewsDetailState implements NewsDetailState {
-  factory _NewsDetailState({final BlocAction? action}) = _$NewsDetailStateImpl;
+  factory _NewsDetailState({final BlocAction? action, final News? newsDetail}) =
+      _$NewsDetailStateImpl;
 
   @override
   BlocAction? get action;
+  @override
+  News? get newsDetail;
   @override
   @JsonKey(ignore: true)
   _$$NewsDetailStateImplCopyWith<_$NewsDetailStateImpl> get copyWith =>
@@ -137,32 +155,44 @@ mixin _$NewsDetailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() backClicked,
+    required TResult Function() linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function()? backClicked,
+    TResult? Function()? linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? backClicked,
+    TResult Function()? linkClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
+    required TResult Function(BackClicked value) backClicked,
+    required TResult Function(LinkClicked value) linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
+    TResult? Function(BackClicked value)? backClicked,
+    TResult? Function(LinkClicked value)? linkClicked,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
+    TResult Function(BackClicked value)? backClicked,
+    TResult Function(LinkClicked value)? linkClicked,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -224,6 +254,8 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
+    required TResult Function() backClicked,
+    required TResult Function() linkClicked,
   }) {
     return init();
   }
@@ -232,6 +264,8 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
+    TResult? Function()? backClicked,
+    TResult? Function()? linkClicked,
   }) {
     return init?.call();
   }
@@ -240,6 +274,8 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
+    TResult Function()? backClicked,
+    TResult Function()? linkClicked,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -252,6 +288,8 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Init value) init,
+    required TResult Function(BackClicked value) backClicked,
+    required TResult Function(LinkClicked value) linkClicked,
   }) {
     return init(this);
   }
@@ -260,6 +298,8 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Init value)? init,
+    TResult? Function(BackClicked value)? backClicked,
+    TResult? Function(LinkClicked value)? linkClicked,
   }) {
     return init?.call(this);
   }
@@ -268,6 +308,8 @@ class _$InitImpl implements Init {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Init value)? init,
+    TResult Function(BackClicked value)? backClicked,
+    TResult Function(LinkClicked value)? linkClicked,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -279,4 +321,220 @@ class _$InitImpl implements Init {
 
 abstract class Init implements NewsDetailEvent {
   const factory Init() = _$InitImpl;
+}
+
+/// @nodoc
+abstract class _$$BackClickedImplCopyWith<$Res> {
+  factory _$$BackClickedImplCopyWith(
+          _$BackClickedImpl value, $Res Function(_$BackClickedImpl) then) =
+      __$$BackClickedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BackClickedImplCopyWithImpl<$Res>
+    extends _$NewsDetailEventCopyWithImpl<$Res, _$BackClickedImpl>
+    implements _$$BackClickedImplCopyWith<$Res> {
+  __$$BackClickedImplCopyWithImpl(
+      _$BackClickedImpl _value, $Res Function(_$BackClickedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BackClickedImpl implements BackClicked {
+  const _$BackClickedImpl();
+
+  @override
+  String toString() {
+    return 'NewsDetailEvent.backClicked()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BackClickedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() backClicked,
+    required TResult Function() linkClicked,
+  }) {
+    return backClicked();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? backClicked,
+    TResult? Function()? linkClicked,
+  }) {
+    return backClicked?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? backClicked,
+    TResult Function()? linkClicked,
+    required TResult orElse(),
+  }) {
+    if (backClicked != null) {
+      return backClicked();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Init value) init,
+    required TResult Function(BackClicked value) backClicked,
+    required TResult Function(LinkClicked value) linkClicked,
+  }) {
+    return backClicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Init value)? init,
+    TResult? Function(BackClicked value)? backClicked,
+    TResult? Function(LinkClicked value)? linkClicked,
+  }) {
+    return backClicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Init value)? init,
+    TResult Function(BackClicked value)? backClicked,
+    TResult Function(LinkClicked value)? linkClicked,
+    required TResult orElse(),
+  }) {
+    if (backClicked != null) {
+      return backClicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BackClicked implements NewsDetailEvent {
+  const factory BackClicked() = _$BackClickedImpl;
+}
+
+/// @nodoc
+abstract class _$$LinkClickedImplCopyWith<$Res> {
+  factory _$$LinkClickedImplCopyWith(
+          _$LinkClickedImpl value, $Res Function(_$LinkClickedImpl) then) =
+      __$$LinkClickedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LinkClickedImplCopyWithImpl<$Res>
+    extends _$NewsDetailEventCopyWithImpl<$Res, _$LinkClickedImpl>
+    implements _$$LinkClickedImplCopyWith<$Res> {
+  __$$LinkClickedImplCopyWithImpl(
+      _$LinkClickedImpl _value, $Res Function(_$LinkClickedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LinkClickedImpl implements LinkClicked {
+  const _$LinkClickedImpl();
+
+  @override
+  String toString() {
+    return 'NewsDetailEvent.linkClicked()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LinkClickedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() backClicked,
+    required TResult Function() linkClicked,
+  }) {
+    return linkClicked();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? backClicked,
+    TResult? Function()? linkClicked,
+  }) {
+    return linkClicked?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? backClicked,
+    TResult Function()? linkClicked,
+    required TResult orElse(),
+  }) {
+    if (linkClicked != null) {
+      return linkClicked();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Init value) init,
+    required TResult Function(BackClicked value) backClicked,
+    required TResult Function(LinkClicked value) linkClicked,
+  }) {
+    return linkClicked(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Init value)? init,
+    TResult? Function(BackClicked value)? backClicked,
+    TResult? Function(LinkClicked value)? linkClicked,
+  }) {
+    return linkClicked?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Init value)? init,
+    TResult Function(BackClicked value)? backClicked,
+    TResult Function(LinkClicked value)? linkClicked,
+    required TResult orElse(),
+  }) {
+    if (linkClicked != null) {
+      return linkClicked(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LinkClicked implements NewsDetailEvent {
+  const factory LinkClicked() = _$LinkClickedImpl;
 }

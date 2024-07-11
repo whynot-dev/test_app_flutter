@@ -33,10 +33,14 @@ class SplashScreen extends StatelessWidget {
                       create: (context) => NavigationBloc(),
                     ),
                     BlocProvider(
-                      create: (context) => BlogsBloc(),
+                      create: (context) => BlogsBloc(
+                        articlesRepository: injection(),
+                      ),
                     ),
                     BlocProvider(
-                      create: (context) => NewsBloc(),
+                      create: (context) => NewsBloc(
+                        articlesRepository: injection(),
+                      ),
                     ),
                     BlocProvider(
                       create: (context) => AboutAppBloc(),
@@ -55,16 +59,6 @@ class SplashScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 4),
                 Container(height: 1, width: 32, color: AppColors.white),
-                const SizedBox(height: 16),
-                Text(
-                  'Переводи язык жестов - легко',
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                    color: AppColors.white,
-                  ),
-                ),
               ],
             ),
           ),

@@ -7,7 +7,6 @@ import 'package:test_app_flutter/gen/assets.gen.dart';
 class DefaultAppbar extends StatelessWidget implements PreferredSizeWidget {
   DefaultAppbar({
     this.title,
-    this.subtitle,
     this.needBackButton = false,
     this.needDivider = false,
     this.onBackPressed,
@@ -19,7 +18,6 @@ class DefaultAppbar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   final String? title;
-  final String? subtitle;
   final bool needBackButton;
   final bool needDivider;
   final VoidCallback? onBackPressed;
@@ -75,18 +73,15 @@ class DefaultAppbar extends StatelessWidget implements PreferredSizeWidget {
         },
         behavior: HitTestBehavior.opaque,
         child: Padding(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           child: SvgPicture.asset(
             Assets.images.backArrow,
-            height: 32,
-            width: 32,
-            color: backButtonColor,
           ),
         ),
       );
 
   Widget _buildTitle() => Text(
-        title!,
+        title ?? '',
         style: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 20,

@@ -43,6 +43,10 @@ class AppLocalizations {
   String get news => _localizedStrings['news'] ?? '';
   String get blogs => _localizedStrings['blogs'] ?? '';
   String get aboutApp => _localizedStrings['aboutApp'] ?? '';
+  String get allNews => _localizedStrings['allNews'] ?? '';
+  String get allBlogs => _localizedStrings['allBlogs'] ?? '';
+  String get goSource => _localizedStrings['goSource'] ?? '';
+  String get search => _localizedStrings['search'] ?? '';
 
 
 }

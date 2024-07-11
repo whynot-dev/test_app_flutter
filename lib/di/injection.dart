@@ -7,7 +7,8 @@ import 'package:test_app_flutter/core/network/dio_helper.dart';
 import 'package:test_app_flutter/core/network/network_info.dart';
 
 import 'package:test_app_flutter/data/gateways/local/preferences_local_gateway.dart';
-
+import 'package:test_app_flutter/data/gateways/remote/articles_remote_gateway.dart';
+import 'package:test_app_flutter/data/repositories/articles_repository.dart';
 
 import 'package:test_app_flutter/localization/app_localizations.dart';
 
@@ -25,4 +26,16 @@ Future setUpLocatorWithDependencies({
   required GlobalKey<NavigatorState> navigatorKey,
 }) async {
   injection.registerSingleton<AppLocalizations>(AppLocalizations.of(context));
+  injection.registerSingleton<InternetConnectionChecker>(InternetConnectionChecker());
+  injection.registerSingleton<NetworkInfo>(NetworkInfoImpl(injection()));
+  injection.registerSingleton<Dio>(DioHelper.getDio(
+    preferencesLocalGateway: injection(),
+    navigatorKey: navigatorKey,
+  ));
+
+  injection.registerLazySingleton<ArticlesRemoteGateway>(() => ArticlesRemoteGateway(injection()));
+  injection.registerLazySingleton<ArticlesRepository>(() => ArticlesRepository(
+        injection(),
+        articlesRemoteGateway: injection(),
+      ));
 }

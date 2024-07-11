@@ -30,6 +30,6 @@ class AppThemes {
       labelStyle: const TextStyle(color: AppColors.inputLabel, fontSize: 16, fontWeight: FontWeight.w400),
       hintStyle: const TextStyle(color: AppColors.inputHint, fontSize: 18, fontWeight: FontWeight.w400),
     ),
-    fontFamily: 'TTFirsNeue',
+    fontFamily: 'Poppins',
   );
 }
