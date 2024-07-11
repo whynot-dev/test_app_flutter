@@ -80,7 +80,6 @@ class BlogsBloc extends Bloc<BlogsEvent, BlogsState> {
   }
 
   FutureOr<void> _searchTextChanged(SearchTextChanged event, Emitter<BlogsState> emit) {
-    print('object');
     emit(state.copyWith(searchText: event.text, action: null));
     _offset = 0;
 
@@ -92,7 +91,6 @@ class BlogsBloc extends Bloc<BlogsEvent, BlogsState> {
       'debouncer',
       Duration(milliseconds: 500),
       () {
-        print('timer');
         add(BlogsEvent.search());
       },
     );

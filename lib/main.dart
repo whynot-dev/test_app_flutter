@@ -16,7 +16,7 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(AppStyles.darkStyle);
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await setUpLocator();
-  await Future.delayed(Duration(seconds: 3));
+  await Future.delayed(Duration(seconds: 1));
   FlutterNativeSplash.remove();
 
   runApp(App());

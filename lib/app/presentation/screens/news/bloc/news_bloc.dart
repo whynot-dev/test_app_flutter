@@ -82,7 +82,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   }
 
   FutureOr<void> _searchTextChanged(SearchTextChanged event, Emitter<NewsState> emit) {
-    print('object');
     emit(state.copyWith(searchText: event.text, action: null));
     _offset = 0;
 
@@ -94,7 +93,6 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
       'debouncer',
       Duration(milliseconds: 500),
       () {
-        print('timer');
         add(NewsEvent.search());
       },
     );
